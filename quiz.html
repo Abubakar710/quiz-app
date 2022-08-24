@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz UI With Validation</title>
+    <link crossorigin='anonymous' href='https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css' integrity='sha512-wnea99uKIC3TJF7v4eKk4Y+lMz2Mklv18+r4na2Gn1abDRPPOeef95xTzdwGD9e6zXJBteMIhZ1+68QC5byJZw==' referrerpolicy='no-referrer' rel='stylesheet'/><!--This is the CDN link for Tailwind CSS. It is been used for the Page UI.-->
+    <style>
+        .quiz-container{
+max-width: 700px;
+min-height: 500px;
+background-color: white;
+margin: 10px auto;
+border-radius: 8px;
+padding: 30px;
+}
+.question-numbercontainer h3 {
+color:#009788;
+border-bottom: 1px solid #ccc;
+margin: 0;
+padding-bottom: 10px;
+}
+.questioncontainer{
+font-size: 1.125rem;
+line-height: 1.75rem;
+color: black;
+padding:15px 0;
+margin-bottom: 20px;
+}
+.optionscontainer div{
+background-color: #ccc;
+font-size: 16px;
+color: black;
+margin-bottom: 10px;
+border-radius: 5px;
+padding:15px;
+position: relative;
+overflow: hidden;
+cursor: pointer;
+}
+.optionscontainer div.disabled{
+pointer-events: none;
+}
+.optionscontainer div.correct{
+z-index: 1;
+color: white;
+}
+.answercontainer{
+line-height:3;
+}
+.optionscontainer div.correct::before {
+content:'';
+position: absolute;
+left: 0;
+top: 0;
+width: 100%;
+height: 100%;
+background-color:green;
+z-index: -1;
+animation: animateBackground 1s ease;
+animation-fill-mode: forwards;
+}
+@keyframes animateBackground{
+0%{
+transform: translateX(-100%);
+}
+100% {
+transform: translateX(0%);
+}
+}
+.optionscontainer div.wrong{
+z-index: 1;
+color: white;
+}
+.optionscontainer div.wrong::before {
+content:'';
+position: absolute;
+left: 0;
+top: 0;
+width: 100%;
+height: 100%;
+background-color:red;
+z-index: -1;
+animation: animateBackground 1s ease;
+animation-fill-mode: forwards;
+}
+/* Css is customizable*/
+    </style>
+</head>
+<body>
+    <script>
+        var score = 0
+    </script>
+    <div class="quiz-container">
+        <div class="question-numbercontainer">
+            <p class="text-sm text-gray-300">Small Text With Some Description <br>
+            </p>
+        </div>
+        <div class="questioncontainer">
+            What is the difference between XML and HTML?
+        </div>
+        <div class="optionscontainer">
+            <div id="11" class="option1 not-correct" onclick="q1check(this)">HTML is used for exchanging data, XML is not. </div>
+            <div id="12" class="option2 not-correct" onclick="q1check(this)">iHTML can have user defined tags, XML  2 cannot </div>
+            <div id="13" class="option3 correctanswer" onclick="q1check(this)">XML is used for exchanging data, HTML is not </div>
+        </div>
+    
+         
+      <div id = "visi1" class="questioncontainer answercontainer"> <b>Solution : C</b> <br>
+        XML is used for exchanging data, HTML is not         
+      </div>
+
+        <script>
+        document.getElementById("visi1").style.visibility = 'hidden'
+
+        function q1check(element){
+            // Point the option ID for the Validation.
+            if(element.id == 13){
+                element.className="correct" // Changing the class name to correct.
+                score += 1
+        document.getElementById('score').innerHTML = score
+
+            }
+            else {
+                element.className="wrong" // Changing the class name to wrong.
+            
+            }
+            document.getElementById("visi1").style.visibility = 'visible'
+
+        }
+        </script>
+       </div>
+
+
+       <div class="quiz-container">
+        <div class="question-numbercontainer">
+            <p class="text-sm text-gray-300">Small Text With Some Description <br>
+            </p>
+        </div>
+        <div class="questioncontainer">
+            Which of the below is the abbreviation of CSS ?
+        </div>
+        <div class="optionscontainer">
+            <div id="11" class="option1 not-correct" onclick="q1check(this)">Cascading style sheet. </div>
+            <div id="12" class="option2 not-correct" onclick="q1check(this)">Coded Style Sheet</div>
+            <div id="13" class="option3 correctanswer" onclick="q1check(this)">Cascade sheets style </div>
+        </div>
+    
+         
+      <div id = "visi2" class="questioncontainer answercontainer"> <b>Solution : C</b> <br>
+
+    </div>
+
+        <script>
+        document.getElementById("visi2").style.visibility = 'hidden'
+
+        function q1check(element){
+            // Point the option ID for the Validation.
+            if(element.id == 13){
+                element.className="correct" // Changing the class name to correct.
+                score += 1
+                document.getElementById('score').innerHTML = score
+
+            }
+            else {
+                element.className="wrong" // Changing the class name to wrong.
+            
+            }
+            document.getElementById("visi2").style.visibility = 'visible'
+
+        }
+        </script>
+       </div>
+       
+
+       <div class="quiz-container">
+        <div class="question-numbercontainer">
+            <p class="text-sm text-gray-300">Small Text With Some Description <br>
+            </p>
+        </div>
+        <div class="questioncontainer">
+            Which of the below CSS properties is used to change the background color of CSS ?
+        </div>
+        <div class="optionscontainer">
+            <div id="11" class="option1 not-correct" onclick="q1check(this)">background-color </div>
+            <div id="12" class="option2 not-correct" onclick="q1check(this)">color</div>
+            <div id="13" class="option3 correctanswer" onclick="q1check(this)">color-background</div>
+        </div>
+    
+         
+      <div id = "visi3" class="questioncontainer answercontainer"> <b>Solution : C</b> <br>
+
+    </div>
+
+        <script>
+        document.getElementById("visi3").style.visibility = 'hidden'
+
+        function q1check(element){
+            // Point the option ID for the Validation.
+            if(element.id == 13){
+                element.className="correct" // Changing the class name to correct.
+                score += 1
+                document.getElementById('score').innerHTML = score
+
+            }
+            else {
+                element.className="wrong" // Changing the class name to wrong.
+            
+            }
+            document.getElementById("visi3").style.visibility = 'visible'
+
+        }
+        </script>
+       </div>
+     
+
+     <div class="quiz-container">
+        <div class="question-numbercontainer">
+            <p class="text-sm text-gray-300">Small Text With Some Description <br>
+            </p>
+        </div>
+        <div class="questioncontainer">
+            Which below property of CSS is used to set the indentation of the first line in a block of text ?
+        </div>
+        <div class="optionscontainer">
+            <div id="11" class="option1 not-correct" onclick="q1check(this)">text-indent property </div>
+            <div id="12" class="option2 not-correct" onclick="q1check(this)">text-underlne-property</div>
+            <div id="13" class="option3 correctanswer" onclick="q1check(this)">text-overflow property </div>
+        </div>
+    
+         
+      <div id = "visi4" class="questioncontainer answercontainer"> <b>Solution : C</b> <br>
+
+    </div>
+
+        <script>
+        document.getElementById("visi4").style.visibility = 'hidden'
+
+        function q1check(element){
+            // Point the option ID for the Validation.
+            if(element.id == 13){
+                element.className="correct" // Changing the class name to correct.
+                score += 1
+        document.getElementById('score').innerHTML = score
+
+            }
+            else {
+                element.className="wrong" // Changing the class name to wrong.
+            
+            }
+            document.getElementById("visi4").style.visibility = 'visible'
+
+        }
+        </script>
+       </div>
+
+
+       <div class="quiz-container">
+        <div class="question-numbercontainer">
+            <p class="text-sm text-gray-300">Small Text With Some Description <br>
+            </p>
+        </div>
+        <div class="questioncontainer">
+            How do we set the default width of the font in CSS ?
+        </div>
+        <div class="optionscontainer">
+            <div id="11" class="option1 not-correct" onclick="q1check(this)">font-stretch </div>
+            <div id="12" class="option2 not-correct" onclick="q1check(this)">text-transform</div>
+            <div id="13" class="option3 correctanswer" onclick="q1check(this)">font-variant</div>
+        </div>
+    
+         
+      <div id = "visi5" class="questioncontainer answercontainer"> <b>Solution : C</b> <br>
+
+    </div>
+
+        <script>
+        document.getElementById("visi5").style.visibility = 'hidden'
+
+        function q1check(element){
+            // Point the option ID for the Validation.
+            if(element.id == 13){
+                element.className="correct" // Changing the class name to correct.
+                score += 1
+                document.getElementById('score').innerHTML = score
+
+            }
+            else {
+                element.className="wrong" // Changing the class name to wrong.
+            
+            }
+            document.getElementById("visi5").style.visibility = 'visible'
+
+        }
+        </script>
+           <h1> Score : <span id = 'score'></span></h1>
+       </div>
+
+    
+
+       <script>
+        document.getElementById('score').innerHTML = score
+       </script>
+
+</body>
+</html>
